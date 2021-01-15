@@ -2,6 +2,7 @@ package com.zhx.household.util;
 
 import com.baidu.aip.bodyanalysis.AipBodyAnalysis;
 import com.zhx.household.http.HttpUtil;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import javax.xml.bind.DatatypeConverter;
@@ -65,7 +66,7 @@ public class BodyAttr {
     /**
      * 人流量统计-动态版
      */
-    public static String body_trafflc(String imagedata, String id, String area) {
+    public static String body_trafflc(String imagedata, String id, String area) throws JSONException, JSONException {
         AipBodyAnalysis client = new AipBodyAnalysis("23522165", "AO3D8iUZPaHaZxw8UjQNed8h", "ulqHm5nF1VLVAlIkResw8AiEEglFGtAX");
         // 传入可选参数调用接口
         HashMap<String, String> options = new HashMap<String, String>();

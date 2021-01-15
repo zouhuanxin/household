@@ -40,7 +40,12 @@ public class MySocketHander implements WebSocketHandler {
                     //给所有人
                     obj.put("msg", msg.getString("msg"));
                     sendMessageToUsers(new TextMessage(obj.toJSONString()));
-                } else {
+                } else if (msg.getInteger("type") == 2) {
+                    //转发给个人
+                    String to = msg.getString("to");
+                    obj.put("msg", msg.getJSONObject("msg"));
+                    sendMessageToUser(to, new TextMessage(obj.toJSONString()));
+                }else {
                     //给个人
                     String to = msg.getString("to");
                     obj.put("msg", faceService.IdentityFaceInfo(msg.getString("msg")));
