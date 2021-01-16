@@ -8,6 +8,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * 获取token类
@@ -20,15 +22,6 @@ public class AuthService {
 
     //AipBodyAnalysis集合
     private static List<AipBodyAnalysis> clients = new ArrayList<>();
-    private static AipBodyAnalysis client1 = new AipBodyAnalysis("23522165", "AO3D8iUZPaHaZxw8UjQNed8h", "ulqHm5nF1VLVAlIkResw8AiEEglFGtAX");
-    private static AipBodyAnalysis client2 = new AipBodyAnalysis("23519086", "7cpw7gI1BtswWSSeqQo9jaA3", "x4YNiaNX3wF5Rs91Fih6Ah7yQtLo5SEK");
-    private static AipBodyAnalysis client3 = new AipBodyAnalysis("23524316", "YR28Dzx58ud0SvRTqUmtf2jB", "0fKfvNW2KtTwUd6tWHDNpdn8Ml7g0nfw");
-    private static AipBodyAnalysis client4 = new AipBodyAnalysis("23524318", "OQMr0HAbhHu06dHQYpc9QohI", "ztKv29D0gtjm8QipOuN1mFWEOstfW35o");
-    private static AipBodyAnalysis client5 = new AipBodyAnalysis("23524438", "jr56bUI7g7CpDx3V2AfysXI4", "XsFvQQ6xgLwhi6gpV7w754zG8DvIvpU0");
-    private static AipBodyAnalysis client6 = new AipBodyAnalysis("23524474", "bsPdswv9w73uIwX23sKNV1Ev", "899mkCq5GKzN5svxa5UB2NRQGR06Gk1F");
-    private static AipBodyAnalysis client7 = new AipBodyAnalysis("23524482", "vjSdgtYcO2A8G1FlZudF9f7K", "wVg77eubxofflxe3oqhOeL64ACE8fYGN");
-    private static AipBodyAnalysis client8 = new AipBodyAnalysis("23524488", "XAYsykPNErMo6r61Arh982aa", "GIdhYIH9pKG3DhnbGSLYTewhKT6l3WxW");
-    private static AipBodyAnalysis client9 = new AipBodyAnalysis("23524493", "4hlYbHpsto8X2zv0GnG6N8wK", "vftZaiGzpc0vKETPHmtPKtMyb9t2C3O8");
 
     public synchronized static String beginAuth() {
         if (identity == null) {
@@ -47,15 +40,15 @@ public class AuthService {
 
     public synchronized static AipBodyAnalysis beginAipBodyAnalysis() {
         if (clients.size() == 0) {
-            clients.add(client1);
-            clients.add(client2);
-            clients.add(client3);
-            clients.add(client4);
-            clients.add(client5);
-            clients.add(client6);
-            clients.add(client7);
-            clients.add(client8);
-            clients.add(client9);
+            clients.add(new AipBodyAnalysis("23522165", "AO3D8iUZPaHaZxw8UjQNed8h", "ulqHm5nF1VLVAlIkResw8AiEEglFGtAX"));
+            clients.add(new AipBodyAnalysis("23519086", "7cpw7gI1BtswWSSeqQo9jaA3", "x4YNiaNX3wF5Rs91Fih6Ah7yQtLo5SEK"));
+            clients.add(new AipBodyAnalysis("23524316", "YR28Dzx58ud0SvRTqUmtf2jB", "0fKfvNW2KtTwUd6tWHDNpdn8Ml7g0nfw"));
+            clients.add(new AipBodyAnalysis("23524318", "OQMr0HAbhHu06dHQYpc9QohI", "ztKv29D0gtjm8QipOuN1mFWEOstfW35o"));
+            clients.add(new AipBodyAnalysis("23524438", "jr56bUI7g7CpDx3V2AfysXI4", "XsFvQQ6xgLwhi6gpV7w754zG8DvIvpU0"));
+            clients.add(new AipBodyAnalysis("23524474", "bsPdswv9w73uIwX23sKNV1Ev", "899mkCq5GKzN5svxa5UB2NRQGR06Gk1F"));
+            clients.add(new AipBodyAnalysis("23524482", "vjSdgtYcO2A8G1FlZudF9f7K", "wVg77eubxofflxe3oqhOeL64ACE8fYGN"));
+            clients.add(new AipBodyAnalysis("23524488", "XAYsykPNErMo6r61Arh982aa", "GIdhYIH9pKG3DhnbGSLYTewhKT6l3WxW"));
+            clients.add(new AipBodyAnalysis("23524493", "4hlYbHpsto8X2zv0GnG6N8wK", "vftZaiGzpc0vKETPHmtPKtMyb9t2C3O8"));
         }
         if (index == 9) {
             index = 0;

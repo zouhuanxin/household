@@ -12,6 +12,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * 相关识别功能还不能部署到1核2G服务器使用
+ */
 @Component
 public class MySocketHander implements WebSocketHandler {
     @Autowired
@@ -26,7 +29,7 @@ public class MySocketHander implements WebSocketHandler {
     public void afterConnectionEstablished(WebSocketSession webSocketSession) throws Exception {
         System.out.println("链接成功......");
         SESSIONS.add(webSocketSession);
-       // String userName = (String) webSocketSession.getAttributes().get("WEBSOCKET_USERNAME");
+        // String userName = (String) webSocketSession.getAttributes().get("WEBSOCKET_USERNAME");
     }
 
     @Override
@@ -45,7 +48,7 @@ public class MySocketHander implements WebSocketHandler {
                     String to = msg.getString("to");
                     obj.put("msg", msg.getJSONObject("msg"));
                     sendMessageToUser(to, new TextMessage(obj.toJSONString()));
-                }else {
+                } else {
                     //给个人
                     String to = msg.getString("to");
                     obj.put("msg", faceService.IdentityFaceInfo(msg.getString("msg")));
