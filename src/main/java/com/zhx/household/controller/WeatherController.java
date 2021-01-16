@@ -15,7 +15,7 @@ public class WeatherController {
 
     /**
      *  当日渣津天气查询
-     *  http://forecast.weather.com.cn/town/weather1dn/101240212034.shtml#input
+     *  http://forecast.wea˚ther.com.cn/town/weather1dn/101240212034.shtml#input
      */
     @GetMapping("getTodayWeather")
     public String getTodayWeather(){
