@@ -12,8 +12,8 @@ import java.util.Map;
 
 @RestController
 public class FaceController {
-    @Autowired
-    private FaceService faceService;
+//    @Autowired
+//    private FaceService faceService;
 
     @PostMapping("IdentifyImageFaceInfo")
     public String IdentifyImageFaceInfo(@RequestBody Map map) {
@@ -24,7 +24,7 @@ public class FaceController {
         } else {
             result.put("code", 200);
             result.put("msg", "成功");
-            result.put("data", faceService.IdentityFaceInfo(map.get("imagedata").toString()));
+            //result.put("data", faceService.IdentityFaceInfo(map.get("imagedata").toString()));
         }
         return result.toJSONString();
     }
@@ -44,9 +44,9 @@ public class FaceController {
         } else {
             result.put("code", 200);
             result.put("msg", "成功");
-            result.put("data", faceService.TrafflcIdentityFaceInfo(
-                    map.get("imagedata").toString(),map.get("id").toString(),map.get("area").toString()
-            ));
+//            result.put("data", faceService.TrafflcIdentityFaceInfo(
+//                    map.get("imagedata").toString(),map.get("id").toString(),map.get("area").toString()
+//            ));
         }
         return result.toJSONString();
     }
