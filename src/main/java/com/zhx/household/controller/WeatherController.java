@@ -17,16 +17,16 @@ public class WeatherController {
      *  当日渣津天气查询
      *  http://forecast.wea˚ther.com.cn/town/weather1dn/101240212034.shtml#input
      */
-    @GetMapping("getTodayWeather")
-    public String getTodayWeather(){
-        JSONObject rep = new JSONObject();
-        try {
-            rep.put("code",200);
-            rep.put("data",weatherService.getTodayWeather());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return rep.toString();
-    }
+//    @GetMapping("getTodayWeather")
+//    public String getTodayWeather(){
+//        JSONObject rep = new JSONObject();
+//        try {
+//            rep.put("code",200);
+//            rep.put("data",weatherService.getTodayWeather());
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//        return rep.toString();
+//    }
 
 }

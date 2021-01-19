@@ -17,7 +17,7 @@ import java.util.List;
  */
 @Component
 public class MySocketHander implements WebSocketHandler {
-    @Autowired
+    //@Autowired
     //private FaceService faceService;
 
     /**
@@ -27,6 +27,15 @@ public class MySocketHander implements WebSocketHandler {
 
     @Override
     public void afterConnectionEstablished(WebSocketSession webSocketSession) throws Exception {
+        //检查是否存在相同的用户
+        for (WebSocketSession user : SESSIONS) {
+            if (user.getAttributes().get("WEBSOCKET_USERNAME").equals(webSocketSession.getAttributes().get("WEBSOCKET_USERNAME"))) {
+                //存在相同的直接删除
+                System.out.println("删除重复用户" + user.getAttributes().get("WEBSOCKET_USERNAME") + "......");
+                SESSIONS.remove(user);
+                break;
+            }
+        }
         System.out.println("链接成功......");
         SESSIONS.add(webSocketSession);
         // String userName = (String) webSocketSession.getAttributes().get("WEBSOCKET_USERNAME");
@@ -38,6 +47,7 @@ public class MySocketHander implements WebSocketHandler {
         JSONObject obj = new JSONObject();
         if (msg.getInteger("type") == 1) {
             //给所有人
+
             obj.put("msg", msg.getString("msg"));
             sendMessageToUsers(new TextMessage(obj.toJSONString()));
         } else if (msg.getInteger("type") == 2) {
